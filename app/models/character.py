@@ -35,4 +35,10 @@ class Character(Base):
         "User",
         back_populates="characters"
     )
+    inventory = relationship(
+        "Inventory",
+        back_populates="character",
+        uselist=False,
+        cascade="all, delete-orphan"
+    )
 
