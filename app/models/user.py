@@ -1,4 +1,5 @@
 from sqlalchemy import String
+from sqlalchemy import Integer
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 from app.db.database import Base
@@ -21,6 +22,11 @@ class User(Base):
     )
 
     hashed_password: Mapped[str]
+
+    karma: Mapped[int] = mapped_column(
+        Integer,
+        default=0
+    )
 
     characters = relationship(
         "Character",

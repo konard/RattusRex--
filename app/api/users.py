@@ -10,6 +10,7 @@ from app.core.security import (
     create_access_token
 )
 from app.schemas.user import UserLogin
+from app.schemas.user import KarmaUpdate
 from fastapi.security import OAuth2PasswordRequestForm
 
 from app.core.security import (
@@ -46,7 +47,8 @@ def create_user(
     return {
         "id": user.id,
         "username": user.username,
-        "email": user.email
+        "email": user.email,
+        "karma": user.karma
     }
 @router.post("/login")
 def login(
@@ -106,5 +108,50 @@ def get_me(
     return {
         "id": current_user.id,
         "username": current_user.username,
-        "email": current_user.email
+        "email": current_user.email,
+        "karma": current_user.karma
+    }
+
+
+@router.post("/me/karma/add")
+def add_karma(
+    karma_data: KarmaUpdate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if karma_data.amount <= 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Amount must be positive"
+        )
+
+    current_user.karma += karma_data.amount
+    db.commit()
+    db.refresh(current_user)
+
+    return {
+        "id": current_user.id,
+        "karma": current_user.karma
+    }
+
+
+@router.post("/me/karma/subtract")
+def subtract_karma(
+    karma_data: KarmaUpdate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if karma_data.amount <= 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Amount must be positive"
+        )
+
+    current_user.karma -= karma_data.amount
+    db.commit()
+    db.refresh(current_user)
+
+    return {
+        "id": current_user.id,
+        "karma": current_user.karma
     }
