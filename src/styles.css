@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background: #0f1115;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-lg border border-zinc-800 bg-panel p-5 shadow-lg;
+  }
+
+  .section-title {
+    @apply mb-4 text-xl font-semibold text-ember;
+  }
+
+  .input {
+    @apply w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-zinc-100 outline-none ring-ember/40 transition focus:border-ember focus:ring-2;
+  }
+
+  .button {
+    @apply rounded-md bg-ember px-4 py-2 font-semibold text-zinc-950 transition hover:bg-yellow-300;
+  }
+
+  .button-secondary {
+    @apply rounded-md border border-zinc-700 px-4 py-2 text-zinc-100 transition hover:border-ember hover:text-ember;
+  }
+
+  .icon-button {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-700 text-zinc-200 transition hover:border-ember hover:text-ember;
+  }
+
+  .nav-link {
+    @apply inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm text-zinc-300 transition hover:bg-zinc-900 hover:text-ember;
+  }
+
+  .nav-link.active {
+    @apply bg-zinc-900 text-ember;
+  }
+
+  .character-card {
+    @apply w-full rounded-lg border border-zinc-800 bg-panel p-4 text-left transition hover:border-ember;
+  }
+
+  .character-card.active {
+    @apply border-ember;
+  }
+
+  .badge {
+    @apply rounded-md border border-ember/50 px-2 py-1 text-sm text-ember;
+  }
+
+  .item-row {
+    @apply flex items-center justify-between gap-3 rounded-md border border-zinc-800 bg-zinc-950/40 p-3;
+  }
+}

@@ -45,7 +45,9 @@ def get_character_inventory(
     if not inventory:
         inventory = Inventory(
             character_id=character_id,
-            gold=0
+            gold=0,
+            silver=0,
+            copper=0
         )
         db.add(inventory)
         db.commit()
@@ -75,6 +77,8 @@ def add_item(
 
     item = InventoryItem(
         name=item_data.name,
+        rarity=item_data.rarity,
+        consumable=item_data.consumable,
         inventory_id=inventory.id
     )
     db.add(item)

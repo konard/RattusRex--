@@ -15,6 +15,12 @@ class Inventory(Base):
     gold: Mapped[int] = mapped_column(
         default=0
     )
+    silver: Mapped[int] = mapped_column(
+        default=0
+    )
+    copper: Mapped[int] = mapped_column(
+        default=0
+    )
 
     character_id: Mapped[int] = mapped_column(
         ForeignKey("characters.id"),
@@ -41,6 +47,13 @@ class InventoryItem(Base):
 
     name: Mapped[str] = mapped_column(
         String(255)
+    )
+    rarity: Mapped[str] = mapped_column(
+        String(50),
+        default="common"
+    )
+    consumable: Mapped[bool] = mapped_column(
+        default=False
     )
 
     inventory_id: Mapped[int] = mapped_column(

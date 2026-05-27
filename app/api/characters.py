@@ -32,10 +32,7 @@ def create_character(
     current_user: User = Depends(get_current_user)
 ):
     character = Character(
-        name=character_data.name,
-        class_name=character_data.class_name,
-        level=character_data.level,
-        route=character_data.route,
+        **character_data.dict(),
         user_id=current_user.id
     )
 
@@ -51,7 +48,8 @@ def create_character(
         "class_name": character.class_name,
         "level": character.level,
         "xp": character.xp,
-        "route": character.route
+        "route": character.route,
+        "is_dead": character.is_dead
     }
 
 @router.get("/characters")

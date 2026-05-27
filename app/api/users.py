@@ -43,12 +43,13 @@ def create_user(
     db.add(user)
     db.commit()
     db.refresh(user)
-    
+
     return {
         "id": user.id,
         "username": user.username,
         "email": user.email,
-        "karma": user.karma
+        "karma": user.karma,
+        "is_admin": user.is_admin
     }
 @router.post("/login")
 def login(
@@ -109,7 +110,8 @@ def get_me(
         "id": current_user.id,
         "username": current_user.username,
         "email": current_user.email,
-        "karma": current_user.karma
+        "karma": current_user.karma,
+        "is_admin": current_user.is_admin
     }
 
 @router.post("/me/karma/add")
