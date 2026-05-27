@@ -34,6 +34,18 @@ def create_character(
     character = Character(
         name=character_data.name,
         class_name=character_data.class_name,
+        subclass=character_data.subclass,
+        race=character_data.race,
+        background=character_data.background,
+        strength=character_data.strength,
+        dexterity=character_data.dexterity,
+        constitution=character_data.constitution,
+        intelligence=character_data.intelligence,
+        wisdom=character_data.wisdom,
+        charisma=character_data.charisma,
+        investigation=character_data.investigation,
+        hp=character_data.hp,
+        armor_class=character_data.armor_class,
         level=character_data.level,
         route=character_data.route,
         user_id=current_user.id
@@ -51,7 +63,19 @@ def create_character(
         "class_name": character.class_name,
         "level": character.level,
         "xp": character.xp,
-        "route": character.route
+        "route": character.route,
+        "subclass": character.subclass,
+        "race": character.race,
+        "background": character.background,
+        "strength": character.strength,
+        "dexterity": character.dexterity,
+        "constitution": character.constitution,
+        "intelligence": character.intelligence,
+        "wisdom": character.wisdom,
+        "charisma": character.charisma,
+        "investigation": character.investigation,
+        "hp": character.hp,
+        "armor_class": character.armor_class
     }
 
 @router.get("/characters")
