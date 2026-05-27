@@ -17,6 +17,54 @@ class Character(Base):
 
     class_name: Mapped[str]
 
+    subclass: Mapped[str] = mapped_column(
+        default=""
+    )
+
+    race: Mapped[str] = mapped_column(
+        default=""
+    )
+
+    background: Mapped[str] = mapped_column(
+        default=""
+    )
+
+    strength: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    dexterity: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    constitution: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    intelligence: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    wisdom: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    charisma: Mapped[int] = mapped_column(
+        default=10
+    )
+
+    investigation: Mapped[int] = mapped_column(
+        default=0
+    )
+
+    hp: Mapped[int] = mapped_column(
+        default=0
+    )
+
+    armor_class: Mapped[int] = mapped_column(
+        default=10
+    )
+
     level: Mapped[int] = mapped_column(
         default=1
     )
@@ -42,5 +90,4 @@ class Character(Base):
         uselist=False,
         cascade="all, delete-orphan"
     )
-
 
