@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer
+from sqlalchemy import String, Integer, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 from app.db.database import Base
@@ -25,6 +25,11 @@ class User(Base):
     karma: Mapped[int] = mapped_column(
         Integer,
         default=0
+    )
+
+    is_admin: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False
     )
 
     characters = relationship(

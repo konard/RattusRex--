@@ -36,5 +36,7 @@ class CharacterUpdate(BaseModel):
     investigation: Optional[int] = None
     hp: Optional[int] = None
     armor_class: Optional[int] = None
+    level: Optional[int] = None
+    is_dead: Optional[bool] = None
 
 

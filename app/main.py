@@ -8,6 +8,7 @@ from app.models.character import Character
 from app.api.characters import router as character_router
 from app.models.inventory import Inventory, InventoryItem
 from app.api.inventory import router as inventory_router
+from app.api.admin import router as admin_router
 
 
 @asynccontextmanager
@@ -18,7 +19,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.include_router(inventory_router)
 app.include_router(character_router)
-Base.metadata.create_all(bind=engine)
+app.include_router(admin_router)
 app.include_router(users_router)
 
 @app.get("/")

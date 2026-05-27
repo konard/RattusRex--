@@ -2,7 +2,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String
 from app.db.database import Base
 
 
@@ -71,6 +71,11 @@ class Character(Base):
 
     xp: Mapped[int] = mapped_column(
         default=0
+    )
+
+    is_dead: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False
     )
 
     route: Mapped[str]
