@@ -34,6 +34,7 @@ def create_character(
     character = Character(
         name=character_data.name,
         class_name=character_data.class_name,
+        level=character_data.level,
         route=character_data.route,
         user_id=current_user.id
     )
@@ -86,11 +87,11 @@ def update_character(
 
         character.xp += character_data.xp
 
-        while character.xp >= character.level:
+        while character.xp >= character.level + 1:
             character.level += 1
-            character.xp -= character.xp
+            character.xp = 0
 
-    update_data = character_data.dict(exclude_unset=True)
+    update_data = character_data.dict(exclude_unset=True, exclude="xp")
 
     for key, value in update_data.items():
         setattr(character, key, value)
